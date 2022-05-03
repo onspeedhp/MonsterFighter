@@ -2,7 +2,7 @@ package ObjectModel;
 
 import Helper.Purchasable;
 
-public abstract class Monster extends Purchasable {
+public class Monster extends Purchasable {
 
     public String _type;
     public String _species;
@@ -18,10 +18,10 @@ public abstract class Monster extends Purchasable {
     public boolean _alive = true;
     public int gold;
 
+    public Monster(){}
     public Monster(int buyPrice, int sellPrice, String Description){
         super(buyPrice, sellPrice, Description);
     }
-
     public Monster(String type, String species, String name, int health, int damage,int heal_amount, int max_health, int experience, int level, int attack, int defence, boolean alive) {
        _type = type;
        _species = species;
@@ -37,14 +37,13 @@ public abstract class Monster extends Purchasable {
         _alive = alive;
     }
     public Monster(String mtype, String mspecies){
-        int hp, dmg, ha, atk, def; 
         switch(mtype){
             case("Offence type"):{
                 switch(mspecies){
                     case("Common"):{
-                        hp = 40;
-                        dmg = 21;
-                        ha = 20;
+                        sethealth(15);
+                        setDamge();
+                        set;
                         atk = 13;
                         def = 16;
                     }
@@ -159,11 +158,11 @@ public abstract class Monster extends Purchasable {
     public int getDamage(){
         return _damage;   
     }
-    protected void sethealth(int live) {
-        _health = live;
+    protected void setHealth(int health) {
+        _health = health;
     }
 
-    public int gethealth() {
+    public int getHealth() {
         return _health;
     }
     public void setAlive(boolean alive){
@@ -219,7 +218,11 @@ public abstract class Monster extends Purchasable {
 
     }
     public void levelUp(){
-
+        ++_level;
+        _attack += 5;
+        _health += 10;
+        _defence += 5;
+        _damage += 5;
     }
     // protected boolean attackUsingSkill(Monster enemy, boolean isSkillUsed) {
 

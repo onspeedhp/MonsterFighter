@@ -5,7 +5,7 @@ public class Game{
     // public ArrayList<Battles>();
     ArrayList<Item> shopItems = new ArrayList<Item>();
     public void sleep(){
-
+        
     }
     public void refreshBattles(){
 
