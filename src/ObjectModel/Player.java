@@ -19,7 +19,9 @@ public class Player {
     public void buy(Item item){
         inventory.add(item);
     }
-
+    public void addMonster(Monster monster) {
+    	party.add(monster);
+    }
     public void sell(Item item){
         inventory.remove(item);
     }

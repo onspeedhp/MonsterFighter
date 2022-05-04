@@ -1,9 +1,11 @@
-package GameRule;
+package gamerule;
+
 import java.util.ArrayList;
 import ObjectModel.*;
 public class Game{
     // public ArrayList<Battles>();
     ArrayList<Item> shopItems = new ArrayList<Item>();
+    public int _day;
     public void sleep(){
         
     }

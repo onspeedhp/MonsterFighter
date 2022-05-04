@@ -22,69 +22,63 @@ public class Monster extends Purchasable {
     public Monster(int buyPrice, int sellPrice, String Description){
         super(buyPrice, sellPrice, Description);
     }
-    public Monster(String type, String species, String name, int health, int damage,int heal_amount, int max_health, int experience, int level, int attack, int defence, boolean alive) {
-       _type = type;
-       _species = species;
+    public Monster(String name, int health, int damage,int heal_amount, int attack, int defence) {
         _name = name;
         _health = health;
         _damage = damage;
         _heal_amount = heal_amount;
-        _max_health = max_health;
-        _experience = experience;
-        _level = level;
         _attack = attack;
         _defence = defence;
-        _alive = alive;
     }
     public Monster(String mtype, String mspecies){
         switch(mtype){
             case("Offence type"):{
                 switch(mspecies){
                     case("Common"):{
-                        sethealth(15);
-                        setDamge();
-                        set;
-                        atk = 13;
-                        def = 16;
+                        setHealth(15);
+                        setDamge(15);
+                        setHealthAmount(15);
+                        setAttack(15);;
+                        setDefence(15);
                     }
                     case("Uncommon"):{
-                        hp = 1;
-                        dmg = 35;
-                        ha = 1;
-                        atk = 17;
-                        def = 19;
+                        setHealth(15);
+                        setDamge(15);
+                        setHealthAmount(15);
+                        setAttack(15);;
+                        setDefence(15);
                     }
                     case("Rare"):{
-                        hp = 65;
-                        dmg = 25;
-                        ha = 32;
-                        atk = 18;
-                        def = 18;
+                        setHealth(15);
+                        setDamge(15);
+                        setHealthAmount(15);
+                        setAttack(15);;
+                        setDefence(15);
                     }
                 }
             }
             case("Defence type"):{
                 switch(mspecies){
                     case("Common"):{
-                        hp = 65;
-                        dmg = 12;
-                        ha = 35;
-                        atk = 9;
-                        def = 20;
+                        setHealth(15);
+                        setDamge(15);
+                        setHealthAmount(15);
+                        setAttack(15);;
+                        setDefence(15);
                     }
                     case("Uncommon"):{
-                        hp = 60;
-                        dmg = 15;
-                        ha = 25;
-                        atk = 10;
-                        def = 23;
+                        setHealth(15);
+                        setDamge(15);
+                        setHealthAmount(15);
+                        setAttack(15);;
+                        setDefence(15);
                     }
                     case("Rare"):{
-                        hp = 110;
-                        dmg = 18;
-                        ha = 50;
-                        atk = 11;
-                        def = 19;
+                        setHealth(15);
+                        setDamge(15);
+                        setHealthAmount(15);
+                        setAttack(15);;
+                        setDefence(15);
                     }
                 }
                 
@@ -92,25 +86,25 @@ public class Monster extends Purchasable {
             case("General type"):{
                 switch(mspecies){
                     case("Common"):{
-                        hp = 50;
-                        dmg = 15;
-                        ha = 25;
-                        atk = 10;
-                        def = 18;
+                        setHealth(15);
+                        setDamge(15);
+                        setHealthAmount(15);
+                        setAttack(15);;
+                        setDefence(15);
                     }
                     case("Uncommon"):{
-                        hp = 60;
-                        dmg = 25;
-                        ha = 30;
-                        atk = 9;
-                        def = 19;
+                        setHealth(15);
+                        setDamge(15);
+                        setHealthAmount(15);
+                        setAttack(15);;
+                        setDefence(15);
                     }
                     case("Rare"):{
-                        hp = 70;
-                        dmg = 25;
-                        ha = 9999;
-                        atk = 12;
-                        def = 20;
+                        setHealth(15);
+                        setDamge(15);
+                        setHealthAmount(15);
+                        setAttack(15);;
+                        setDefence(15);
                     }
                 }
                 
@@ -118,47 +112,52 @@ public class Monster extends Purchasable {
             case("Unique type"):{
                 switch(mspecies){
                     case("Common"):{
-                        hp = 75;
-                        dmg = 20;
-                        ha = 35;
-                        atk = 13;
-                        def = 13;
+                        setHealth(15);
+                        setDamge(15);
+                        setHealthAmount(15);
+                        setAttack(15);;
+                        setDefence(15);
                     }
                     case("Uncommon"):{
-                        hp = 60;
-                        dmg = 50;
-                        ha = 30;
-                        atk = 6;
-                        def = 18;
+                        setHealth(15);
+                        setDamge(15);
+                        setHealthAmount(15);
+                        setAttack(15);;
+                        setDefence(15);
                     }
                     case("Rare"):{
-                        hp = 150;
-                        dmg = 20;
-                        ha = 0;
-                        atk = 12;
-                        def = 21;
+                        setHealth(15);
+                        setDamge(15);
+                        setHealthAmount(15);
+                        setAttack(15);;
+                        setDefence(15);
                     }
                 }
             }
         }
     }
-    // public int target(Monster e){
-    //     int damage;
-    //     damage = (int)(e.get)
-    // }
-    // protected
-    protected void setMonsterName(String name) {
+    public void setDefence(int defence) {
+        _defence = defence;
+    }
+    public void setHealthAmount(int heal_amount) {
+        _heal_amount = heal_amount;
+    }
+    public void setDamge(int damage) {
+        _damage = damage;
+    }
+
+    public void setName(String name) {
             _name = name;
         }
 
-    public String getMonsterName() {
+    public String getName() {
         return _name;
     }
 
     public int getDamage(){
         return _damage;   
     }
-    protected void setHealth(int health) {
+    public void setHealth(int health) {
         _health = health;
     }
 
@@ -174,23 +173,7 @@ public class Monster extends Purchasable {
         }
         return _alive;
     }
-    
 
-    // public int getAttack(boolean isSkillUsed) {
-    //     if (isSkillUsed) {
-    //         switch (_skill) {
-    //             case BITE:
-    //                 return _attack * 2;
-    //             case KICK:
-    //                 return _attack * 5;
-    //             case CLAW:
-    //                 return _attack * 10;
-    //             default:
-    //                 return _attack;
-    //         }
-    //     }
-    //     return _attack;
-    // }
 
     public void setAttack(int attack) {
         _attack = attack;
@@ -224,23 +207,4 @@ public class Monster extends Purchasable {
         _defence += 5;
         _damage += 5;
     }
-    // protected boolean attackUsingSkill(Monster enemy, boolean isSkillUsed) {
-
-    //     int live;
-    //     if (isSkillUsed) {
-    //         System.out.println(_name+ " attack using skill " + _skill.name() + "(" + getAttack(true) + ")");
-    //         live = enemy.health - getAttack(true);
-    //     } else {
-    //         System.out.println(getMonsterName() + " attack (" + getAttack(false) + ")");
-    //         live = enemy.health - getAttack(false);
-    //     }
-    //     enemy.health=live;
-    //     if (enemy.gethealth() > 0) {
-    //         System.out.println(enemy._name + "(" + enemy.health + ")");
-    //         return false;
-    //     } else {
-    //         System.out.println(enemy._name + "(DEFEATED)");
-    //         return true;
-    //     }
-    // }
 }
