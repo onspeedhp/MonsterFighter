@@ -68,8 +68,29 @@ public class MainGame extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				gc.healMonster();
 				gc.setCurrentDay(gc.getCurrentDay()+1);
+				try {
+					JLabel lblNewLabel_2 = new JLabel("Monster's team was heal.");
+					lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 13));
+					lblNewLabel_2.setBounds(55, 138, 279, 14);
+					contentPane.add(lblNewLabel_2);
+					Thread.sleep(200);
+					JLabel lblNewLabel_2_1 = new JLabel("Let's fight some battle!");
+					lblNewLabel_2_1.setFont(new Font("Tahoma", Font.BOLD, 13));
+					lblNewLabel_2_1.setBounds(55, 163, 279, 14);
+					contentPane.add(lblNewLabel_2_1);
+					Thread.sleep(200);
+					JLabel lblNewLabel_2_1_1 = new JLabel("Let's gooooo!");
+					lblNewLabel_2_1_1.setFont(new Font("Tahoma", Font.BOLD, 13));
+					lblNewLabel_2_1_1.setBounds(55, 188, 279, 14);
+					contentPane.add(lblNewLabel_2_1_1);
+					Thread.sleep(200);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				gc.launchMainScreen();
 				closeAndDestoryCurrentScreen();
+				
 			}
 		});
 		button_3.setBounds(230, 215, 70, 22);
@@ -119,6 +140,8 @@ public class MainGame extends JFrame {
 		});
 		btnNewButton_1.setBounds(27, 86, 89, 23);
 		contentPane.add(btnNewButton_1);
+		
+		
 	}
 	public void show(Boolean visible) {
 		this.contentPane.setVisible(visible);

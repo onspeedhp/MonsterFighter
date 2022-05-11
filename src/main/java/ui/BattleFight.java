@@ -117,57 +117,87 @@ public class BattleFight extends JFrame {
 	}
 	public void  Fight(ArrayList<Monster> monster, ArrayList<Monster> enemy, boolean isPlayerTurn) {
 		int i = 0;
-		int j = 2;
-		JTextField text = new JTextField();
-		text.setFont(new Font("Tahoma", Font.BOLD, 13));
-		text.setHorizontalAlignment(SwingConstants.LEFT);
-		text.setBounds(34, 179, 270, 71);
-		contentPane.add(text);
-		text.setColumns(10);
-		try {
-		
-			do {
-				if (isPlayerTurn == true) {
-					text.setText(monster.get(i).getName() + " attack " + enemy.get(j).getName());
-					monster.get(i).attack(enemy.get(j));
-					
-					Thread.sleep(500);
-					if (enemy.get(j).isFainted() == true) {
-						text.setText(enemy.get(j).getName() + " is fainted. The second monster wil repalce.");
-						j++;
-						Thread.sleep(500);
-					}
-					text.setText(enemy.get(j).getName() + " attack " + monster.get(i).getName());
-					enemy.get(j).attack(monster.get(i));
-					Thread.sleep(500);
-					if (monster.get(i).isFainted() == true) {
-						text.setText(monster.get(i).getName() + " is fainted. The next monster wil repalce.");
-						i++;
-						Thread.sleep(500);
-					}
-					
+		int j = 0;
+		while(i<(monster.size()-1) && j<(enemy.size()-1)) {
+			if (isPlayerTurn == true) {
+				JTextField text = new JTextField();
+				text.setFont(new Font("Tahoma", Font.BOLD, 13));
+				text.setHorizontalAlignment(SwingConstants.LEFT);
+				text.setBounds(34, 179, 270, 71);
+				contentPane.add(text);
+				text.setColumns(10);
+				text.setText(monster.get(i).getName() + " attack " + enemy.get(j).getName());
+				monster.get(i).attack(enemy.get(j));
+				
+//					Thread.sleep(500);
+				if (enemy.get(j).isFainted() == true) {
+					JTextField text1 = new JTextField();
+					text1.setFont(new Font("Tahoma", Font.BOLD, 13));
+					text1.setHorizontalAlignment(SwingConstants.LEFT);
+					text1.setBounds(34, 179, 270, 71);
+					contentPane.add(text1);
+					text1.setColumns(10);
+					text1.setText(enemy.get(j).getName() + " is fainted. The second monster wil repalce.");
+					j++;
+//						Thread.sleep(500);
 				}
-				else {
-					enemy.get(j).attack(monster.get(i));
-					if (monster.get(i).isFainted() == true) {
-						i++;
-					}
-					monster.get(i).attack(enemy.get(j));
-					if (enemy.get(j).isFainted()==true) {
-						j++;
-					}
+				JTextField text1 = new JTextField();
+				text1.setFont(new Font("Tahoma", Font.BOLD, 13));
+				text1.setHorizontalAlignment(SwingConstants.LEFT);
+				text1.setBounds(34, 179, 270, 71);
+				contentPane.add(text1);
+				text1.setColumns(10);
+				text1.setText(enemy.get(j).getName() + " attack " + monster.get(i).getName());
+				enemy.get(j).attack(monster.get(i));
+//					Thread.sleep(500);
+				if (monster.get(i).isFainted() == true) {
+					JTextField text11 = new JTextField();
+					text11.setFont(new Font("Tahoma", Font.BOLD, 13));
+					text11.setHorizontalAlignment(SwingConstants.LEFT);
+					text11.setBounds(34, 179, 270, 71);
+					contentPane.add(text11);
+					text11.setColumns(10);
+					text11.setText(monster.get(i).getName() + " is fainted. The next monster wil repalce.");
+					i++;
+//						Thread.sleep(500);
 				}
-			}while(i<monster.size() || j<enemy.size());
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+				
+			}
+			else {
+				enemy.get(j).attack(monster.get(i));
+				if (monster.get(i).isFainted() == true) {
+					i++;
+				}
+				monster.get(i).attack(enemy.get(j));
+				if (enemy.get(j).isFainted()==true) {
+					j++;
+				}
+			}
 		}
 		if (i == (monster.size()-1)) {
+			JTextField text = new JTextField();
+			text.setFont(new Font("Tahoma", Font.BOLD, 13));
+			text.setHorizontalAlignment(SwingConstants.LEFT);
+			text.setBounds(34, 179, 270, 71);
+			contentPane.add(text);
+			text.setColumns(10);
 			text.setText("Player has loose the battle.");
+			gc.getNumBattle().remove(1);
+//			gc.launchBattle();
+//			closeAndDestoryCurrentScreen();
 		}
 		else {
+			JTextField text = new JTextField();
+			text.setFont(new Font("Tahoma", Font.BOLD, 13));
+			text.setHorizontalAlignment(SwingConstants.LEFT);
+			text.setBounds(34, 179, 270, 71);
+			contentPane.add(text);
+			text.setColumns(10);
 			text.setText("Enemy has loose the battle.");
+//			closeAndDestoryCurrentScreen();
+//			gc.launchBattle();
 		}
 	}
+	
 }
 

@@ -17,6 +17,8 @@ import javax.swing.JToggleButton;
 import java.awt.Button;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import javax.swing.JLayeredPane;
 
 public class BattleScreen extends JFrame {
@@ -37,8 +39,11 @@ public class BattleScreen extends JFrame {
 		contentPane.setLayout(null);
 		
 		ButtonGroup group = new ButtonGroup();
-
-		for(int i = 0 ; i< 4 ; i++) {
+		gc.getNumBattle().add(1);
+		gc.getNumBattle().add(2);
+		gc.getNumBattle().add(3);
+		gc.getNumBattle().add(4);
+		for(int i = 0 ; i< gc.getNumBattle().size() ; i++) {
 			JToggleButton btnNewButton = new JToggleButton("Battle " + Integer.toString(i+1));
 			btnNewButton.setBounds(23 + i*100, 70, 89, 23);
 			contentPane.add(btnNewButton);

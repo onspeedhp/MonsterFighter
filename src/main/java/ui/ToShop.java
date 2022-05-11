@@ -104,6 +104,7 @@ public class ToShop extends JFrame {
 		btnNewButton_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				gc.launchMainScreen();
 				closeAndDestoryCurrentScreen();
 			}
 		});

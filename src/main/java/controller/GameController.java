@@ -13,6 +13,7 @@ public class GameController {
     private Generator generator;
     private final Team team;
     private final Bag bag;
+    private ArrayList<Integer> numbattle; 
     // variables
     private String playerName;
     private String difficulty;
@@ -28,6 +29,7 @@ public class GameController {
         this.team = new Team();
         this.bag = new Bag();
         this.generator = new Generator();
+        this.numbattle = new ArrayList<Integer>(0); 
         startGame();
     }
 
@@ -66,7 +68,7 @@ public class GameController {
     public void launchFightScreen() {
     	new BattleFight(this);
     }
-
+    
     /**
      * Launch a new mainScreen
      */
@@ -100,7 +102,9 @@ public class GameController {
     public void addItemrBag(GameItem item) {
         this.bag.addItemtoBag(item);;
     }
-
+    public ArrayList<Integer> getNumBattle() {
+    	return this.numbattle;
+    }
 
     /*
     getters go here
