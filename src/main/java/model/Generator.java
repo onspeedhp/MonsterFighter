@@ -50,7 +50,7 @@ public class Generator {
         Monster enemy3 = new Monster("Ashe", 100, 50, 60, 25, 1);
         Monster enemy4 = new Monster("Victor", 100, 50, 60, 50, 1);
         Monster enemy5 = new Monster("Ezreal", 100, 50, 40, 21, 1);
-        Collections.addAll(initMonsters, enemy1, enemy2, enemy3, enemy4, enemy5);
+        Collections.addAll(initMonsters, enemy1, enemy2, enemy3);
         return initMonsters;
     }
     public ArrayList<Monster> generatshopMonsters() {

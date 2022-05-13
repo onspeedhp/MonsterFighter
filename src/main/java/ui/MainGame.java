@@ -40,7 +40,7 @@ public class MainGame extends JFrame {
 		contentPane.setLayout(null);
 		JLabel lblScore = new JLabel("Score: ");
 		lblScore.setFont(new Font("Arial", Font.BOLD, 12));
-		lblScore.setBounds(126, 21, 40, 14);
+		lblScore.setBounds(140, 21, 40, 14);
 		contentPane.add(lblScore);
 		
 		JLabel lblName = new JLabel("Name:");
@@ -59,52 +59,41 @@ public class MainGame extends JFrame {
 		contentPane.add(lblScore_2_1);
 		
 		Button button_2 = new Button("New game");
+		button_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				gc.launchStartScreen();
+				closeAndDestoryCurrentScreen();
+			}
+		});
 		button_2.setBounds(141, 215, 70, 22);
 		contentPane.add(button_2);
 		
 		Button button_3 = new Button("Next day");
 		button_3.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mousePressed(MouseEvent e) {
 				gc.healMonster();
 				gc.setCurrentDay(gc.getCurrentDay()+1);
-				try {
-					JLabel lblNewLabel_2 = new JLabel("Monster's team was heal.");
-					lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 13));
-					lblNewLabel_2.setBounds(55, 138, 279, 14);
-					contentPane.add(lblNewLabel_2);
-					Thread.sleep(200);
-					JLabel lblNewLabel_2_1 = new JLabel("Let's fight some battle!");
-					lblNewLabel_2_1.setFont(new Font("Tahoma", Font.BOLD, 13));
-					lblNewLabel_2_1.setBounds(55, 163, 279, 14);
-					contentPane.add(lblNewLabel_2_1);
-					Thread.sleep(200);
-					JLabel lblNewLabel_2_1_1 = new JLabel("Let's gooooo!");
-					lblNewLabel_2_1_1.setFont(new Font("Tahoma", Font.BOLD, 13));
-					lblNewLabel_2_1_1.setBounds(55, 188, 279, 14);
-					contentPane.add(lblNewLabel_2_1_1);
-					Thread.sleep(200);
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
 				gc.launchMainScreen();
 				closeAndDestoryCurrentScreen();
-				
 			}
 		});
 		button_3.setBounds(230, 215, 70, 22);
 		contentPane.add(button_3);
+		if (gc.getCurrentDay() > gc.getTotalDay()) {
+			System.exit(0);
+		}
 		
 		JLabel lblNewLabel = new JLabel(this.gc.getPlayerName());
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNewLabel.setBounds(55, 20, 61, 14);
+		lblNewLabel.setBounds(46, 20, 92, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel(Integer.toString(this.gc.getPoint()));
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(165, 21, 46, 14);
+		lblNewLabel_1.setBounds(176, 20, 28, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel(Integer.toString(this.gc.getGold()));
@@ -140,8 +129,6 @@ public class MainGame extends JFrame {
 		});
 		btnNewButton_1.setBounds(27, 86, 89, 23);
 		contentPane.add(btnNewButton_1);
-		
-		
 	}
 	public void show(Boolean visible) {
 		this.contentPane.setVisible(visible);

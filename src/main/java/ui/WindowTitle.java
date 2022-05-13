@@ -36,11 +36,10 @@ public class WindowTitle {
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblNewLabel.setText(this.gc.getPlayerName());
-		lblNewLabel.setBounds(69, 26, 123, 14);
+		lblNewLabel.setBounds(69, 26, 213, 14);
 		frame.getContentPane().add(lblNewLabel);
 		
 		ArrayList<Monster> monsterinit = this.gc.getInitMonsters();
-		
 		JToggleButton txtMonster = new JToggleButton();
 		txtMonster.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

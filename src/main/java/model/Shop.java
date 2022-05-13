@@ -12,6 +12,9 @@ public class Shop {
     	this.monsterForSell = monsterForSell;
     	this.itemForSell = itemForSell;
     }
+    public Shop() {
+    	
+    }
     private void refreshShop() {
     	
     }

@@ -47,7 +47,7 @@ public class StartScreen extends JFrame {
 				gc.setPlayerName(playerName);
 			}
 		});
-		textField.setBounds(139, 51, 143, 20);
+		textField.setBounds(139, 51, 206, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
@@ -56,12 +56,6 @@ public class StartScreen extends JFrame {
 		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		lblNewLabel.setBounds(10, 50, 133, 21);
 		contentPane.add(lblNewLabel);
-		
-		JLabel lblHallOfFame = new JLabel("HALL OF FAME");
-		lblHallOfFame.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHallOfFame.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		lblHallOfFame.setBounds(315, 135, 92, 12);
-		contentPane.add(lblHallOfFame);
 		
 		JLabel lblNumberOfDays = new JLabel("Number of days:");
 		lblNumberOfDays.setFont(new Font("Times New Roman", Font.PLAIN, 15));
@@ -156,12 +150,8 @@ public class StartScreen extends JFrame {
 		slider.setMaximum(15);
 		slider.setMinimum(5);
 		slider.setValue(7);
-		slider.setBounds(139, 70, 143, 62);
+		slider.setBounds(139, 70, 206, 62);
 		contentPane.add(slider);
-		
-		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(407, 38, 17, 80);
-		contentPane.add(scrollBar);
 		this.gc.setCurrentDay(1);
 		
 	}

@@ -17,8 +17,6 @@ import javax.swing.JToggleButton;
 import java.awt.Button;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-
 import javax.swing.JLayeredPane;
 
 public class BattleScreen extends JFrame {
@@ -39,11 +37,8 @@ public class BattleScreen extends JFrame {
 		contentPane.setLayout(null);
 		
 		ButtonGroup group = new ButtonGroup();
-		gc.getNumBattle().add(1);
-		gc.getNumBattle().add(2);
-		gc.getNumBattle().add(3);
-		gc.getNumBattle().add(4);
-		for(int i = 0 ; i< gc.getNumBattle().size() ; i++) {
+
+		for(int i = 0 ; i< 4 ; i++) {
 			JToggleButton btnNewButton = new JToggleButton("Battle " + Integer.toString(i+1));
 			btnNewButton.setBounds(23 + i*100, 70, 89, 23);
 			contentPane.add(btnNewButton);
@@ -56,9 +51,9 @@ public class BattleScreen extends JFrame {
 		lblNewLabel.setBounds(24, 24, 46, 14);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
+		JLabel lblNewLabel_1 = new JLabel(gc.getPlayerName());
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNewLabel_1.setBounds(64, 25, 71, 13);
+		lblNewLabel_1.setBounds(64, 25, 159, 13);
 		contentPane.add(lblNewLabel_1);
 		
 		JPanel panel = new JPanel();
@@ -73,8 +68,19 @@ public class BattleScreen extends JFrame {
 				closeAndDestoryCurrentScreen();
 			}
 		});
-		button.setBounds(180, 212, 70, 22);
+		button.setBounds(137, 212, 70, 22);
 		contentPane.add(button);
+		
+		Button back = new Button("Back");
+		back.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				gc.launchMainScreen();
+				closeAndDestoryCurrentScreen();
+			}
+		});
+		back.setBounds(224, 212, 70, 22);
+		contentPane.add(back);
 		
 		
 		

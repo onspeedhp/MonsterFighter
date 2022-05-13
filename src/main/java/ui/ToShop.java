@@ -38,8 +38,8 @@ public class ToShop extends JFrame {
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Name:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -48,7 +48,7 @@ public class ToShop extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel(this.gc.getPlayerName());
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNewLabel_1.setBounds(74, 26, 69, 14);
+		lblNewLabel_1.setBounds(74, 26, 128, 14);
 		getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Gold:");
@@ -82,9 +82,9 @@ public class ToShop extends JFrame {
 		list_1.setBounds(220, 85, 133, 60);
 		getContentPane().add(list_1);
 
-//		ArrayList<Monster> monsterteam = gc.getTeamMember();
-//		String array_monsterteam[] = {monsterteam.get(0).getName(),monsterteam.get(1).getName(),monsterteam.get(2).getName()};
-		JList list_2 = new JList(array_itemshop);
+		ArrayList<Monster> monsterteam = gc.getTeamMember();
+		String array_monsterteam[] = {monsterteam.get(0).getName(),monsterteam.get(1).getName(),monsterteam.get(2).getName()};
+		JList list_2 = new JList(array_monsterteam);
 		list_2.setBounds(75, 156, 133, 60);
 		getContentPane().add(list_2);
 //		
@@ -103,22 +103,19 @@ public class ToShop extends JFrame {
 		JButton btnNewButton_3 = new JButton("Exit Shop");
 		btnNewButton_3.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mousePressed(MouseEvent e) {
 				gc.launchMainScreen();
 				closeAndDestoryCurrentScreen();
-			}
-		});
-		btnNewButton_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		btnNewButton_3.setBounds(162, 227, 89, 23);
 		getContentPane().add(btnNewButton_3);
 		
-		JLabel lblNewLabel_3 = new JLabel("Your:");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_3.setBounds(19, 156, 46, 14);
+		JLabel lblNewLabel_3 = new JLabel("Your: ");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel_3.setBounds(10, 157, 46, 14);
 		contentPane.add(lblNewLabel_3);
+		
 	}
 	public void show(Boolean visible) {
 		this.contentPane.setVisible(visible);
