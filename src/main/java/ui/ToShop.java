@@ -11,6 +11,7 @@ import main.java.controller.GameController;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import main.java.model.*;
 
@@ -18,6 +19,8 @@ public class ToShop extends JFrame {
 
 	private JPanel contentPane;
 	private GameController gc;
+	private JLabel lblNewLabel_4;
+	private String[] array_monstershop;
 	
 	public ToShop(GameController gc) {
 		this.gc = gc;
@@ -43,61 +46,112 @@ public class ToShop extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Name:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel.setBounds(32, 26, 46, 14);
+		lblNewLabel.setBounds(30, 11, 46, 14);
 		getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel(this.gc.getPlayerName());
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNewLabel_1.setBounds(74, 26, 128, 14);
+		lblNewLabel_1.setBounds(74, 11, 128, 14);
 		getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Gold:");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_2.setBounds(212, 26, 46, 14);
+		lblNewLabel_2.setBounds(212, 11, 37, 14);
 		getContentPane().add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_1_1 = new JLabel(Integer.toString(this.gc.getGold()));
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNewLabel_1_1.setBounds(248, 26, 69, 14);
+		lblNewLabel_1_1.setBounds(245, 11, 69, 14);
 		getContentPane().add(lblNewLabel_1_1);
 		
 		JButton btnNewButton = new JButton("Monster");
-		btnNewButton.setBounds(74, 52, 134, 23);
+		btnNewButton.setBounds(68, 36, 134, 23);
 		getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Item");
-		btnNewButton_1.setBounds(222, 52, 133, 23);
+		btnNewButton_1.setBounds(212, 36, 133, 23);
 		getContentPane().add(btnNewButton_1);
 		
 		ArrayList<Monster> monstershop = this.gc.getinitshopMonsters();
-//		
-		String array_monstershop[] = {monstershop.get(0).getName(),monstershop.get(1).getName(),monstershop.get(2).getName()};
+		String[] array_monstershop = {monstershop.get(0).getName(),monstershop.get(1).getName(),monstershop.get(2).getName()};
 		JList List = new JList(array_monstershop);
-		List.setBounds(74, 85, 134, 60);
+		List.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		List.setBounds(68, 70, 134, 60);
 		getContentPane().add(List);
 //		
 		ArrayList<GameItem> itemshop = this.gc.getinitshopitem();
 		String array_itemshop[] = {itemshop.get(0).getName(),itemshop.get(1).getName(),itemshop.get(2).getName()};
 		JList list_1 = new JList(array_itemshop);
-		list_1.setBounds(220, 85, 133, 60);
+		list_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		list_1.setBounds(212, 70, 133, 60);
 		getContentPane().add(list_1);
-
+		
 		ArrayList<Monster> monsterteam = gc.getTeamMember();
-		String array_monsterteam[] = {monsterteam.get(0).getName(),monsterteam.get(1).getName(),monsterteam.get(2).getName()};
+		String[] array_monsterteam = {};
+		
+		for (Monster b : monsterteam) {
+			array_monsterteam = append(array_monsterteam,b.getName());
+		}
+		
 		JList list_2 = new JList(array_monsterteam);
-		list_2.setBounds(75, 156, 133, 60);
+		list_2.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		list_2.setBounds(68, 141, 133, 73);
 		getContentPane().add(list_2);
-//		
-		JList list_2_1 = new JList(array_itemshop);
-		list_2_1.setBounds(220, 154, 133, 60);
+		
+		ArrayList<GameItem> itembag= gc.getItemBag();
+		String[] array_itembag = {};
+		
+		for (GameItem b : itembag) {
+			array_itembag = append(array_itembag,b.getName());
+		}
+		JList list_2_1 = new JList(array_itembag);
+		list_2_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		list_2_1.setBounds(212, 141, 133, 73);
 		getContentPane().add(list_2_1);
 		
+		lblNewLabel_4 = new JLabel();
+		lblNewLabel_4.setBounds(135, 225, 179, 14);
+		contentPane.add(lblNewLabel_4);
+		
 		JButton btnNewButton_2 = new JButton("BUY");
-		btnNewButton_2.setBounds(363, 81, 61, 60);
+		btnNewButton_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				if(gc.getGold() > monstershop.get(List.getSelectedIndex()).getPrice()) {
+					gc.setGold(gc.getGold() - monstershop.get(List.getSelectedIndex()).getPrice());
+					gc.addMonsterToTeam(monstershop.get(list_1.getSelectedIndex()));
+					gc.addItemrBag(itemshop.get(List.getSelectedIndex()));
+					monstershop.remove(List.getSelectedIndex());
+				}else if (gc.getGold()<0){
+					lblNewLabel_4.setText("You're not enough gold to buy this");
+				}
+				if(gc.getGold() > itemshop.get(list_1.getSelectedIndex()).getPrice()) {
+					gc.setGold(gc.getGold()  - itemshop.get(list_1.getSelectedIndex()).getPrice());
+					gc.addItemrBag(itemshop.get(List.getSelectedIndex()));
+					itemshop.remove(list_1.getSelectedIndex());
+				}else if (gc.getGold()<0){
+					lblNewLabel_4.setText("You're not enough gold to buy this");
+				}
+				gc.launchToShop();
+				closeAndDestoryCurrentScreen();
+				
+				
+			}
+		});
+		btnNewButton_2.setBounds(355, 84, 71, 28);
 		getContentPane().add(btnNewButton_2);
 		
 		JButton btnNewButton_2_1 = new JButton("SELL");
-		btnNewButton_2_1.setBounds(363, 154, 61, 60);
+		btnNewButton_2_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				gc.setGold(gc.getGold() + monstershop.get(list_2.getSelectedIndex()).getPrice());
+				gc.removeMonsterToTeam(monstershop.get(list_2.getSelectedIndex()));
+				gc.launchToShop();
+				closeAndDestoryCurrentScreen();
+			}
+		});
+		btnNewButton_2_1.setBounds(355, 162, 71, 28);
 		getContentPane().add(btnNewButton_2_1);
 		
 		JButton btnNewButton_3 = new JButton("Exit Shop");
@@ -108,7 +162,7 @@ public class ToShop extends JFrame {
 				closeAndDestoryCurrentScreen();
 			}
 		});
-		btnNewButton_3.setBounds(162, 227, 89, 23);
+		btnNewButton_3.setBounds(161, 238, 89, 23);
 		getContentPane().add(btnNewButton_3);
 		
 		JLabel lblNewLabel_3 = new JLabel("Your: ");
@@ -116,6 +170,14 @@ public class ToShop extends JFrame {
 		lblNewLabel_3.setBounds(10, 157, 46, 14);
 		contentPane.add(lblNewLabel_3);
 		
+		
+		
+	}
+	static <T> T[] append(T[] arr, T element) {
+	    final int N = arr.length;
+	    arr = Arrays.copyOf(arr, N + 1);
+	    arr[N] = element;
+	    return arr;
 	}
 	public void show(Boolean visible) {
 		this.contentPane.setVisible(visible);

@@ -96,6 +96,9 @@ public class GameController {
     public void addMonsterToTeam(Monster monster) {
         this.team.addMonsterToTeam(monster);
     }
+    public void removeMonsterToTeam(Monster monster) {
+        this.team.removeMonsterToTeam(monster);
+    }
     public void addItemrBag(GameItem item) {
         this.bag.addItemtoBag(item);;
     }

@@ -55,7 +55,7 @@ public class MainGame extends JFrame {
 		
 		JLabel lblScore_2_1 = new JLabel("Number of days:");
 		lblScore_2_1.setFont(new Font("Arial", Font.BOLD, 12));
-		lblScore_2_1.setBounds(300, 21, 92, 14);
+		lblScore_2_1.setBounds(293, 21, 99, 14);
 		contentPane.add(lblScore_2_1);
 		
 		Button button_2 = new Button("New game");
@@ -105,7 +105,7 @@ public class MainGame extends JFrame {
 		JLabel lblNewLabel_1_1_1 = new JLabel(Integer.toString(this.gc.getCurrentDay()) + "/" + Integer.toString(this.gc.getTotalDay()));
 		lblNewLabel_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNewLabel_1_1_1.setBounds(393, 20, 31, 14);
+		lblNewLabel_1_1_1.setBounds(382, 20, 52, 14);
 		contentPane.add(lblNewLabel_1_1_1);
 		
 		JButton btnNewButton = new JButton("Shop");

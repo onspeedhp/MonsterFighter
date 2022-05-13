@@ -40,6 +40,9 @@ public class Team {
      *
      * @return true if the team is full. Otherwise, return false.
      */
+    public void removeMonsterToTeam(Monster newMonster) {
+    	this.teamMember.remove(newMonster);
+    }
     public boolean teamIsFull() {
         return this.teamMember.size() >= this.maxTeamMember;
     }

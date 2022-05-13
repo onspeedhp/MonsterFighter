@@ -16,8 +16,6 @@ import java.awt.event.MouseEvent;
 
 public class BattleFight extends JFrame {
 	private String a;
-	private ArrayList<Monster> monster;
-	private ArrayList<Monster> enemy;
 	private JPanel contentPane;
 	private GameController gc;
 	private JLabel lblNewLabel_1;

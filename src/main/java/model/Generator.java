@@ -72,6 +72,12 @@ public class Generator {
         Collections.addAll(initshopitem, sword, medicine, knife, shield);
         return initshopitem;
     }
+    public ArrayList<GameItem> bagItem() {
+        ArrayList<GameItem> initbagitem = new ArrayList<>();
+        Medicine medicine = new Medicine("Pill", 100, 50, "Add 50 to monster's health", true, 50);
+        Collections.addAll(initbagitem,medicine);
+        return initbagitem;
+    }
 
 //	public Monster generateMonster() {
 //		
